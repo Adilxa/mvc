@@ -10,10 +10,15 @@ const TodoController: React.FC = () => {
         setTodos([...todos, newTodo]);
     };
 
+    const deleteTodo = (id: number) => {
+        const filterArr = todos.filter((el) => el.id !== id)
+        setTodos(filterArr)
+    }
+
     return (
         <div>
             <button onClick={() => addTodo("New Todo")}>Add Todo</button>
-            <TodoView todos={todos} />
+            <TodoView todos={todos} deleteTodo={deleteTodo} />
         </div>
     );
 };
